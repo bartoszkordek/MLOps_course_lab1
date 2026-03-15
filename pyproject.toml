@@ -8,4 +8,5 @@ dependencies = [
     "matplotlib",
     "pandas",
     "pre-commit>=4.5.1",
+    "pydantic-settings>=2.13.1",
 ]
