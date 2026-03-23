@@ -1,6 +1,14 @@
 import os
 
 import joblib
+import pandas as pd
+
+SELECTED_SEPAL_FEATURES = [
+    "sepal length (cm)",
+    "sepal width (cm)",
+    "petal length (cm)",
+    "petal width (cm)",
+]
 
 
 def load_model():
@@ -16,14 +24,17 @@ def load_model():
 
 
 def predict(model, data_dictionary: dict) -> str:
-    features = [
+    df = pd.DataFrame(
         [
-            data_dictionary["sepal_length"],
-            data_dictionary["sepal_width"],
-            data_dictionary["petal_length"],
-            data_dictionary["petal_width"],
+            {
+                "sepal length (cm)": data_dictionary["sepal_length"],
+                "sepal width (cm)": data_dictionary["sepal_width"],
+                "petal length (cm)": data_dictionary["petal_length"],
+                "petal width (cm)": data_dictionary["petal_width"],
+            }
         ]
-    ]
+    )
+    features = df[SELECTED_SEPAL_FEATURES]
     prediction_index = model.predict(features)[0]
     target_names = ["setosa", "versicolor", "virginica"]
     return target_names[prediction_index]
