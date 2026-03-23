@@ -61,6 +61,7 @@ rather than production deployment.
 
 ## ⚙️ Requirements
 - uv
+- gpg
 - Docker
 - Docker Compose
 ### `uv` installation:
